@@ -1,0 +1,502 @@
+2021-11-06 15:09:49.126 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:09:49.144 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:09:49.166 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:09:49.167 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:09:49.253 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 110.9886ms
+2021-11-06 15:09:49.340 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:09:49.396 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 56.3352ms
+2021-11-06 15:10:17.335 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=feedback - -
+2021-11-06 15:10:17.367 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:10:17.394 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:10:18.020 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-11-06 15:10:18.197 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-11-06 15:10:18.553 +05:00 [INF] Executed DbCommand (40ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId], [u0].[Id], [u0].[CreatedBy], [u0].[CreatedDate], [u0].[LastModifiedBy], [u0].[LastModifiedDate], [u0].[PersonWebUrl], [u0].[UserName], [u1].[Id], [u1].[ConnectionId], [u1].[CreatedBy], [u1].[CreatedDate], [u1].[LastModifiedBy], [u1].[LastModifiedDate], [u1].[UserId], [u2].[Id], [u2].[ConnectionId], [u2].[CreatedBy], [u2].[CreatedDate], [u2].[LastModifiedBy], [u2].[LastModifiedDate], [u2].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+LEFT JOIN [UserConnection] AS [u1] ON [u0].[Id] = [u1].[UserId]
+LEFT JOIN [UserConnection] AS [u2] ON [u0].[Id] = [u2].[ConnectionId]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u3]
+    WHERE ([u0].[Id] = [u3].[ConnectionId]) AND ([u3].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+ORDER BY [u].[Id], [u0].[Id], [u1].[Id], [u2].[Id]
+2021-11-06 15:16:07.607 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:16:07.625 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:16:07.639 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:16:07.640 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:16:07.723 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 100.2404ms
+2021-11-06 15:16:07.807 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:16:07.882 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 74.5988ms
+2021-11-06 15:16:22.961 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=feedback - -
+2021-11-06 15:16:22.990 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:16:23.013 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:16:23.668 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-11-06 15:16:23.772 +05:00 [WRN] The navigation 'UserConnection.User' was ignored from 'Include' in the query since the fix-up will automatically populate it. If any further navigations are specified in 'Include' afterwards then they will be ignored. Walking back include tree is not allowed.
+2021-11-06 15:16:23.775 +05:00 [WRN] The navigation 'UserConnection.Connection' was ignored from 'Include' in the query since the fix-up will automatically populate it. If any further navigations are specified in 'Include' afterwards then they will be ignored. Walking back include tree is not allowed.
+2021-11-06 15:16:23.866 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-11-06 15:16:24.286 +05:00 [INF] Executed DbCommand (92ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId], [u0].[Id], [u0].[CreatedBy], [u0].[CreatedDate], [u0].[LastModifiedBy], [u0].[LastModifiedDate], [u0].[PersonWebUrl], [u0].[UserName], [u1].[Id], [u1].[ConnectionId], [u1].[CreatedBy], [u1].[CreatedDate], [u1].[LastModifiedBy], [u1].[LastModifiedDate], [u1].[UserId], [u2].[Id], [u2].[ConnectionId], [u2].[CreatedBy], [u2].[CreatedDate], [u2].[LastModifiedBy], [u2].[LastModifiedDate], [u2].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+LEFT JOIN [UserConnection] AS [u1] ON [u0].[Id] = [u1].[UserId]
+LEFT JOIN [UserConnection] AS [u2] ON [u0].[Id] = [u2].[ConnectionId]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u3]
+    WHERE ([u0].[Id] = [u3].[ConnectionId]) AND ([u3].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+ORDER BY [u].[Id], [u0].[Id], [u1].[Id], [u2].[Id]
+2021-11-06 15:20:47.686 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:20:47.707 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:20:47.723 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:20:47.725 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:20:47.811 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 106.2499ms
+2021-11-06 15:20:47.902 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:20:47.973 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 70.8530ms
+2021-11-06 15:20:59.689 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - -
+2021-11-06 15:20:59.714 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:20:59.743 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:21:01.108 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:21:01.617 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:21:01.701 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:21:01.734 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:21:01.749 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:21:01.754 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:21:01.758 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:21:01.760 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:21:01.768 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO, ExpertDirectory.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-11-06 15:21:01.781 +05:00 [INF] Executed action ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API) in 2033.7784ms
+2021-11-06 15:21:01.783 +05:00 [INF] Executed endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:21:01.790 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - - - 200 - application/json;+charset=utf-8 2100.2799ms
+2021-11-06 15:25:44.035 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:25:44.056 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:25:44.074 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:25:44.076 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:25:44.163 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 108.7636ms
+2021-11-06 15:25:44.244 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:25:44.303 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 58.8115ms
+2021-11-06 15:25:57.015 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - -
+2021-11-06 15:25:57.046 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:25:57.075 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:25:57.910 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:25:58.420 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:25:58.501 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:25:58.531 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:25:58.546 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:25:58.551 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:25:58.554 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:25:58.557 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:25:58.562 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[ConnectionId] = @__p_0
+2021-11-06 15:25:58.571 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO, ExpertDirectory.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-11-06 15:25:58.584 +05:00 [INF] Executed action ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API) in 1503.6261ms
+2021-11-06 15:25:58.586 +05:00 [INF] Executed endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:25:58.590 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - - - 200 - application/json;+charset=utf-8 1575.7824ms
+2021-11-06 15:28:22.769 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:28:22.787 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:28:22.801 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:28:22.803 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:28:22.887 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 102.1562ms
+2021-11-06 15:28:22.967 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:28:23.046 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 79.0368ms
+2021-11-06 15:28:36.409 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=feedback - -
+2021-11-06 15:28:36.435 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:28:36.461 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:28:37.330 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:28:37.850 +05:00 [INF] Executed DbCommand (43ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:28:37.935 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:28:37.969 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:28:37.987 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:28:37.990 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:28:37.996 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[ConnectionId] = @__p_0
+2021-11-06 15:29:32.166 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:29:32.187 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:29:32.201 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:29:32.203 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:29:32.284 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 98.4549ms
+2021-11-06 15:29:32.370 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:29:32.431 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 61.2760ms
+2021-11-06 15:29:44.938 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - -
+2021-11-06 15:29:44.963 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:29:44.992 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:29:45.801 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:29:46.281 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:29:46.362 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:29:46.395 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:29:46.410 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:29:46.414 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:29:46.417 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:29:46.419 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:29:46.424 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[ConnectionId] = @__p_0
+2021-11-06 15:29:46.432 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO, ExpertDirectory.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-11-06 15:29:46.444 +05:00 [INF] Executed action ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API) in 1448.2709ms
+2021-11-06 15:29:46.446 +05:00 [INF] Executed endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:29:46.453 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - - - 200 - application/json;+charset=utf-8 1515.0661ms
+2021-11-06 15:31:38.921 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:31:38.938 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:31:38.951 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:31:38.953 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:31:39.034 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 98.1015ms
+2021-11-06 15:31:39.117 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:31:39.177 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 60.4307ms
+2021-11-06 15:31:49.843 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - -
+2021-11-06 15:31:49.873 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:31:49.905 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:31:50.735 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:31:51.243 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:31:51.321 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:31:51.351 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:31:51.366 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:31:51.371 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:31:51.377 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[ConnectionId] = @__p_0
+2021-11-06 15:32:10.958 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:32:10.978 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:32:10.999 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:32:11.000 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:32:11.088 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 112.9820ms
+2021-11-06 15:32:11.174 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:32:11.235 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 61.5779ms
+2021-11-06 15:32:23.655 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=Feedback - -
+2021-11-06 15:32:23.680 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:32:23.704 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:32:24.510 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:32:25.016 +05:00 [INF] Executed DbCommand (34ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:32:25.100 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:32:25.131 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:32:25.148 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:32:25.152 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:32:25.156 +05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[ConnectionId] = @__p_0
+2021-11-06 15:34:47.834 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:34:47.853 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:34:47.869 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:34:47.871 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:34:47.964 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 112.7066ms
+2021-11-06 15:34:48.061 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:34:48.130 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 69.3711ms
+2021-11-06 15:35:54.853 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=5&SearchTerm=feedback - -
+2021-11-06 15:35:54.897 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:35:54.926 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:35:55.838 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:35:56.443 +05:00 [INF] Executed DbCommand (45ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:35:56.557 +05:00 [ERR] Application Request: Unhandled Exception for Request HeadingSearchQuery {"UserId":5,"SearchTerm":"feedback","$type":"HeadingSearchQuery"}
+ExpertDirectory.Application.Exceptions.NotFoundException: Entity "UserHeadings" (feedback) was not found.
+   at ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQueryHandler.Handle(HeadingSearchQuery request, CancellationToken cancellationToken) in C:\Users\DELL\source\repos\ExpertDirectory\Application\ExpertDirectory.Application\Features\Headings\Queries\HeadingSearchQueryHandler.cs:line 36
+   at ExpertDirectory.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\DELL\source\repos\ExpertDirectory\Application\ExpertDirectory.Application\Behaviours\ValidationBehaviour.cs:line 42
+   at ExpertDirectory.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\DELL\source\repos\ExpertDirectory\Application\ExpertDirectory.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+2021-11-06 15:35:56.684 +05:00 [INF] Executed action ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API) in 1754.1301ms
+2021-11-06 15:35:56.687 +05:00 [INF] Executed endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:35:56.784 +05:00 [ERR] ExpertDirectory.Application.Exceptions.NotFoundException: Entity "UserHeadings" (feedback) was not found.
+   at ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQueryHandler.Handle(HeadingSearchQuery request, CancellationToken cancellationToken) in C:\Users\DELL\source\repos\ExpertDirectory\Application\ExpertDirectory.Application\Features\Headings\Queries\HeadingSearchQueryHandler.cs:line 36
+   at ExpertDirectory.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\DELL\source\repos\ExpertDirectory\Application\ExpertDirectory.Application\Behaviours\ValidationBehaviour.cs:line 42
+   at ExpertDirectory.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\DELL\source\repos\ExpertDirectory\Application\ExpertDirectory.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 25
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at ExpertDirectory.API.Controllers.HeadingController.SearchHeading(HeadingSearchQuery query) in C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API\Controllers\HeadingController.cs:line 38
+   at lambda_method5(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at ExpertDirectory.API.Middlewares.ExceptionHandlerMiddleware.Invoke(HttpContext httpContext) in C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API\Middlewares\ExceptionHandlerMiddleware.cs:line 37
+2021-11-06 15:35:56.882 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=5&SearchTerm=feedback - - - 400 - application/json 2029.3722ms
+2021-11-06 15:36:07.010 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=feedback - -
+2021-11-06 15:36:07.013 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:36:07.015 +05:00 [INF] Route matched with {action = "SearchHeading", controller = "Heading"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO]]] SearchHeading(ExpertDirectory.Application.Features.Headings.Queries.HeadingSearchQuery) on controller ExpertDirectory.API.Controllers.HeadingController (ExpertDirectory.API).
+2021-11-06 15:36:07.041 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:36:07.059 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__query_UserId_0='?' (DbType = Int64), @__query_SearchTerm_1='?' (Size = 4000), @__item_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[HeadingTitle], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserHeadings] AS [u]
+INNER JOIN [User] AS [u0] ON [u].[UserId] = [u0].[Id]
+WHERE (([u].[UserId] <> @__query_UserId_0) AND NOT (EXISTS (
+    SELECT 1
+    FROM [UserConnection] AS [u1]
+    WHERE ([u0].[Id] = [u1].[ConnectionId]) AND ([u1].[ConnectionId] = @__query_UserId_0)))) AND ((CASE
+    WHEN (@__query_SearchTerm_1 LIKE N'') OR (CHARINDEX(@__query_SearchTerm_1, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END | CASE
+    WHEN (@__item_2 LIKE N'') OR (CHARINDEX(@__item_2, [u].[HeadingTitle]) > 0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END) = CAST(1 AS bit))
+2021-11-06 15:36:07.128 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:36:07.163 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:36:07.180 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:36:07.187 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:36:07.190 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[Id] = @__p_0
+2021-11-06 15:36:07.197 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[UserId] = @__p_0
+2021-11-06 15:36:07.205 +05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[ConnectionId], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[UserId]
+FROM [UserConnection] AS [u]
+WHERE [u].[ConnectionId] = @__p_0
+2021-11-06 15:36:07.214 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ExpertDirectory.Application.Models.MemberConnection.MemberSearchDTO, ExpertDirectory.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2021-11-06 15:36:07.226 +05:00 [INF] Executed action ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API) in 208.9588ms
+2021-11-06 15:36:07.227 +05:00 [INF] Executed endpoint 'ExpertDirectory.API.Controllers.HeadingController.SearchHeading (ExpertDirectory.API)'
+2021-11-06 15:36:07.229 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/api/Heading?UserId=4&SearchTerm=feedback - - - 200 - application/json;+charset=utf-8 219.3653ms
+2021-11-06 15:37:26.818 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-06 15:37:26.841 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/index.html - -
+2021-11-06 15:37:26.857 +05:00 [INF] Hosting environment: Development
+2021-11-06 15:37:26.860 +05:00 [INF] Content root path: C:\Users\DELL\source\repos\ExpertDirectory\API\ExpertDirectory.API
+2021-11-06 15:37:26.956 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/index.html - - - 200 - text/html;charset=utf-8 117.3724ms
+2021-11-06 15:37:27.054 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - -
+2021-11-06 15:37:27.118 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 64.2804ms
+2021-11-06 15:42:09.423 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost:3069/api/Member/1 - -
+2021-11-06 15:42:09.461 +05:00 [INF] Executing endpoint 'ExpertDirectory.API.Controllers.MemberController.GetMemberProfile (ExpertDirectory.API)'
+2021-11-06 15:42:09.491 +05:00 [INF] Route matched with {action = "GetMemberProfile", controller = "Member"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[ExpertDirectory.Application.Models.User.MemberProfileDTO]] GetMemberProfile(Int64) on controller ExpertDirectory.API.Controllers.MemberController (ExpertDirectory.API).
+2021-11-06 15:42:10.364 +05:00 [INF] Entity Framework Core 5.0.11 initialized 'ExpertDirectoryContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: using lazy-loading proxies 
+2021-11-06 15:42:10.579 +05:00 [WRN] Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+2021-11-06 15:42:11.030 +05:00 [INF] Executed DbCommand (82ms) [Parameters=[@__userId_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[LastModifiedBy], [t].[LastModifiedDate], [t].[PersonWebUrl], [t].[UserName], [t0].[Id], [t0].[ConnectionId], [t0].[CreatedBy], [t0].[CreatedDate], [t0].[LastModifiedBy], [t0].[LastModifiedDate], [t0].[UserId], [t0].[Id0], [t0].[CreatedBy0], [t0].[CreatedDate0], [t0].[LastModifiedBy0], [t0].[LastModifiedDate0], [t0].[PersonWebUrl], [t0].[UserName], [t1].[Id], [t1].[ConnectionId], [t1].[CreatedBy], [t1].[CreatedDate], [t1].[LastModifiedBy], [t1].[LastModifiedDate], [t1].[UserId], [t1].[Id0], [t1].[CreatedBy0], [t1].[CreatedDate0], [t1].[LastModifiedBy0], [t1].[LastModifiedDate0], [t1].[PersonWebUrl], [t1].[UserName], [u4].[Id], [u4].[CreatedBy], [u4].[CreatedDate], [u4].[HeadingTitle], [u4].[LastModifiedBy], [u4].[LastModifiedDate], [u4].[UserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[CreatedBy], [u].[CreatedDate], [u].[LastModifiedBy], [u].[LastModifiedDate], [u].[PersonWebUrl], [u].[UserName]
+    FROM [User] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [u0].[Id], [u0].[ConnectionId], [u0].[CreatedBy], [u0].[CreatedDate], [u0].[LastModifiedBy], [u0].[LastModifiedDate], [u0].[UserId], [u1].[Id] AS [Id0], [u1].[CreatedBy] AS [CreatedBy0], [u1].[CreatedDate] AS [CreatedDate0], [u1].[LastModifiedBy] AS [LastModifiedBy0], [u1].[LastModifiedDate] AS [LastModifiedDate0], [u1].[PersonWebUrl], [u1].[UserName]
+    FROM [UserConnection] AS [u0]
+    INNER JOIN [User] AS [u1] ON [u0].[ConnectionId] = [u1].[Id]
+) AS [t0] ON [t].[Id] = [t0].[UserId]
+LEFT JOIN (
+    SELECT [u2].[Id], [u2].[ConnectionId], [u2].[CreatedBy], [u2].[CreatedDate], [u2].[LastModifiedBy], [u2].[LastModifiedDate], [u2].[UserId], [u3].[Id] AS [Id0], [u3].[CreatedBy] AS [CreatedBy0], [u3].[CreatedDate] AS [CreatedDate0], [u3].[LastModifiedBy] AS [LastModifiedBy0], [u3].[LastModifiedDate] AS [LastModifiedDate0], [u3].[PersonWebUrl], [u3].[UserName]
+    FROM [UserConnection] AS [u2]
+    INNER JOIN [User] AS [u3] ON [u2].[UserId] = [u3].[Id]
+) AS [t1] ON [t].[Id] = [t1].[ConnectionId]
+LEFT JOIN [UserHeadings] AS [u4] ON [t].[Id] = [u4].[UserId]
+ORDER BY [t].[Id], [t0].[Id], [t0].[Id0], [t1].[Id], [t1].[Id0], [u4].[Id]
+2021-11-06 15:42:11.161 +05:00 [INF] Executing OkObjectResult, writing value of type 'ExpertDirectory.Application.Models.User.MemberProfileDTO'.
+2021-11-06 15:42:11.175 +05:00 [INF] Executed action ExpertDirectory.API.Controllers.MemberController.GetMemberProfile (ExpertDirectory.API) in 1678.736ms
+2021-11-06 15:42:11.176 +05:00 [INF] Executed endpoint 'ExpertDirectory.API.Controllers.MemberController.GetMemberProfile (ExpertDirectory.API)'
+2021-11-06 15:42:11.182 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost:3069/api/Member/1 - - - 200 - application/json;+charset=utf-8 1759.1525ms
